@@ -1,0 +1,35 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.1.0
+    hooks:
+      - id: trailing-whitespace
+        args: ['--markdown-linebreak-ext=md']
+      - id: end-of-file-fixer
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: detect-aws-credentials
+        args: ['--allow-missing-credentials']
+repos:
+-   repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.99.5
+    hooks:
+    - id: terraform_fmt
+      args:
+        - --args=-recursive
+    - id: terraform_validate
+      args:
+        - --args=-json
+        - --args=-no-color
+    - id: terraform_docs
+      args:
+        - --args=--output-file TF-DOCS.md
+
+- repo: local
+  hooks:
+    - id: terraform_tflint
+      name: tflint (local)
+      entry: tflint
+      language: system
+      types: [terraform]
+      pass_filenames: false
+      args: ["--chdir=./", "--config=.tflint.hcl", "--recursive"]

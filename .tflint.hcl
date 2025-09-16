@@ -1,0 +1,18 @@
+plugin "aws" {
+  enabled = true
+  version = "0.37.0"
+  source  = "github.com/terraform-linters/tflint-ruleset-aws"
+}
+
+config {
+  call_module_type  = "all" # substitui o antigo "module"
+}
+
+# Required that all AWS resources have specified tags.
+rule "aws_resource_missing_tags" {
+  enabled = true
+  tags = [
+    "Name",
+    "Environment",
+  ]
+}

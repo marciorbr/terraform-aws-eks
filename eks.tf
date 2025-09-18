@@ -1,5 +1,5 @@
 resource "aws_eks_cluster" "main" {
-  name    = "eks-cluster-${local.name_suffix}"
+  name    = local.eks_cluster_name
   version = var.k8s_version
 
   role_arn = aws_iam_role.eks_cluster_role.arn
@@ -31,9 +31,9 @@ resource "aws_eks_cluster" "main" {
   ]
 
   tags = {
-    Name                                                     = "eks-cluster-${local.name_suffix}"
-    Environment                                              = var.environment
-    "kubernetes.io/cluster/eks-cluster-${local.name_suffix}" = "shared"
+    Name                                                          = "eks-cluster-${local.name_suffix}"
+    Environment                                                   = var.environment
+    "kubernetes.io/cluster/eks-cluster-${local.eks_cluster_name}" = "shared"
   }
 
 }

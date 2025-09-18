@@ -30,6 +30,13 @@ variable "endpoint_private_access" {
 
 }
 
+variable "endpoint_public_access" {
+  description = "Enable public access to the EKS API server endpoint"
+  type        = bool
+  default     = true
+
+}
+
 variable "cluster_log_types" {
   description = "Map of log types to enable/disable"
   type        = map(bool)
@@ -46,5 +53,23 @@ variable "zonal_shift_enabled" {
   description = "Enable zonal shift for the EKS cluster"
   type        = bool
   default     = false
+
+}
+
+variable "on_demand_instance_types" {
+  description = "List of instance types for on-demand nodes"
+  type        = list(string)
+  default     = ["t3.medium"]
+
+}
+
+variable "on_demand_auto_scale_options" {
+  description = "Auto-scaling options for on-demand node group"
+  type        = map(number)
+  default = {
+    desired = 1
+    max     = 1
+    min     = 1
+  }
 
 }

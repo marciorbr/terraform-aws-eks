@@ -7,7 +7,7 @@ resource "aws_eks_cluster" "main" {
   vpc_config {
 
     endpoint_private_access = var.endpoint_private_access
-    endpoint_public_access  = true
+    endpoint_public_access  = var.endpoint_public_access
 
     subnet_ids = var.private_subnets
   }
@@ -31,7 +31,7 @@ resource "aws_eks_cluster" "main" {
   ]
 
   tags = {
-    Name                                                          = "eks-cluster-${local.name_suffix}"
+    Name                                                          = local.eks_cluster_name
     Environment                                                   = var.environment
     "kubernetes.io/cluster/eks-cluster-${local.eks_cluster_name}" = "shared"
   }

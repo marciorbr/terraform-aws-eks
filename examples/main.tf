@@ -69,10 +69,16 @@ module "vpc" {
 }
 
 module "eks_cluster" {
-  source          = "../"
-  k8s_version     = local.k8s_version
-  project_name    = local.project_name
-  environment     = local.environment
-  private_subnets = module.vpc.private_subnets
+  source                   = "../"
+  k8s_version              = local.k8s_version
+  project_name             = local.project_name
+  environment              = local.environment
+  private_subnets          = module.vpc.private_subnets_ids
+  on_demand_instance_types = ["t3.medium", "t3.large"]
+  on_demand_auto_scale_options = {
+    desired = 1
+    max     = 2
+    min     = 1
+  }
 
 }

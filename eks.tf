@@ -31,9 +31,9 @@ resource "aws_eks_cluster" "main" {
   ]
 
   tags = {
-    Name                                                          = local.eks_cluster_name
-    Environment                                                   = var.environment
-    "kubernetes.io/cluster/eks-cluster-${local.eks_cluster_name}" = "shared"
+    Name                                              = local.eks_cluster_name
+    Environment                                       = var.environment
+    "kubernetes.io/cluster/${local.eks_cluster_name}" = "shared"
   }
 
 }

@@ -41,3 +41,10 @@ variable "cluster_log_types" {
     scheduler         = true
   }
 }
+
+variable "zonal_shift_enabled" {
+  description = "Enable zonal shift for the EKS cluster"
+  type        = bool
+  default     = false
+
+}

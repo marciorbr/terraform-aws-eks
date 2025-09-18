@@ -49,6 +49,7 @@ No modules.
 | <a name="input_k8s_version"></a> [k8s\_version](#input\_k8s\_version) | The Kubernetes version for the EKS cluster | `string` | `"1.33"` | no |
 | <a name="input_private_subnets"></a> [private\_subnets](#input\_private\_subnets) | List of private subnet IDs | `list(string)` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The name of the project | `string` | n/a | yes |
+| <a name="input_zonal_shift_enabled"></a> [zonal\_shift\_enabled](#input\_zonal\_shift\_enabled) | Enable zonal shift for the EKS cluster | `bool` | `false` | no |
 
 ## Outputs
 

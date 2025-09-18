@@ -22,7 +22,7 @@ resource "aws_eks_cluster" "main" {
   ]
 
   zonal_shift_config {
-    enabled = true
+    enabled = var.zonal_shift_enabled
   }
 
   depends_on = [

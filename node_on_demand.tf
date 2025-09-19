@@ -16,6 +16,14 @@ resource "aws_eks_node_group" "on_demand" {
     min_size     = lookup(var.on_demand_auto_scale_options, "min")
   }
 
+  capacity_type = "ON_DEMAND"
+
+  labels = {
+    "capacity/os"   = "AMAZON_LINUX"
+    "capacity/arch" = "x86_64"
+    "capacity/type" = "ON_DEMAND"
+  }
+
   tags = {
     Name                                              = local.eks_on_demand_node_group
     Environment                                       = var.environment

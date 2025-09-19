@@ -80,5 +80,6 @@ module "eks_cluster" {
     max     = 2
     min     = 1
   }
+  addons = ["vpc-cni", "kube-proxy", "coredns"]
 
 }

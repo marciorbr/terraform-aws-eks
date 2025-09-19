@@ -22,6 +22,7 @@ No modules.
 | Name | Type |
 |------|------|
 | [aws_eks_access_entry.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_access_entry) | resource |
+| [aws_eks_addon.eks-addons](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_addon) | resource |
 | [aws_eks_cluster.main](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_cluster) | resource |
 | [aws_eks_node_group.on_demand](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_node_group) | resource |
 | [aws_iam_instance_profile.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_instance_profile) | resource |
@@ -35,6 +36,7 @@ No modules.
 | [aws_iam_role_policy_attachment.eks_service_policy](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ssm](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_eks_addon_version.addon_version](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_addon_version) | data source |
 | [aws_eks_cluster.this](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_cluster) | data source |
 | [aws_eks_cluster_auth.this](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_cluster_auth) | data source |
 | [aws_iam_policy_document.cluster](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
@@ -45,6 +47,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_addons"></a> [addons](#input\_addons) | List of EKS addons to install | `list(string)` | <pre>[<br/>  "coredns",<br/>  "vpc-cni",<br/>  "kube-proxy"<br/>]</pre> | no |
 | <a name="input_cluster_log_types"></a> [cluster\_log\_types](#input\_cluster\_log\_types) | Map of log types to enable/disable | `map(bool)` | <pre>{<br/>  "api": true,<br/>  "audit": true,<br/>  "authenticator": true,<br/>  "controllerManager": true,<br/>  "scheduler": true<br/>}</pre> | no |
 | <a name="input_endpoint_private_access"></a> [endpoint\_private\_access](#input\_endpoint\_private\_access) | Enable private access to the EKS API server endpoint | `bool` | `true` | no |
 | <a name="input_endpoint_public_access"></a> [endpoint\_public\_access](#input\_endpoint\_public\_access) | Enable public access to the EKS API server endpoint | `bool` | `true` | no |

@@ -1,1 +1,2 @@
 # TODO KMS no cluster para encriptar secrets
+# TODO dar acesso de admin no cluster a uma IAM role passada como variável

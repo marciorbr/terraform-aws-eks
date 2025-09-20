@@ -5,12 +5,14 @@
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.12 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.11.0 |
+| <a name="requirement_helm"></a> [helm](#requirement\_helm) | 3.0.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 6.11.0 |
+| <a name="provider_helm"></a> [helm](#provider\_helm) | 3.0.2 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | 4.1.0 |
 
 ## Modules
@@ -36,8 +38,12 @@ No modules.
 | [aws_iam_role_policy_attachment.eks_service_policy](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ssm](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
+| [helm_release.kube_state_metrics](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
+| [helm_release.metrics_server](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
+| [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/caller_identity) | data source |
 | [aws_eks_addon_version.addon_version](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_addon_version) | data source |
 | [aws_eks_cluster.this](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_cluster) | data source |
+| [aws_eks_cluster_auth.default](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_cluster_auth) | data source |
 | [aws_eks_cluster_auth.this](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_cluster_auth) | data source |
 | [aws_iam_policy_document.cluster](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
@@ -61,5 +67,12 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_aws_caller_identity"></a> [aws\_caller\_identity](#output\_aws\_caller\_identity) | n/a |
+| <a name="output_aws_eks_cluster_auth"></a> [aws\_eks\_cluster\_auth](#output\_aws\_eks\_cluster\_auth) | n/a |
+| <a name="output_eks_certificate_authority"></a> [eks\_certificate\_authority](#output\_eks\_certificate\_authority) | EKS Cluster certificate authority data |
+| <a name="output_eks_cluster_id"></a> [eks\_cluster\_id](#output\_eks\_cluster\_id) | EKS Cluster ID |
+| <a name="output_eks_cluster_name"></a> [eks\_cluster\_name](#output\_eks\_cluster\_name) | EKS Cluster name |
+| <a name="output_eks_endpoint"></a> [eks\_endpoint](#output\_eks\_endpoint) | EKS Cluster endpoint |
 <!-- END_TF_DOCS -->

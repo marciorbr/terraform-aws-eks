@@ -76,9 +76,9 @@ module "eks_cluster" {
   private_subnets          = module.vpc.private_subnets_ids
   on_demand_instance_types = ["t3.medium", "t3.large"]
   on_demand_auto_scale_options = {
-    desired = 1
-    max     = 2
-    min     = 1
+    desired = 2
+    max     = 3
+    min     = 2
   }
   addons = ["vpc-cni", "kube-proxy", "coredns"]
 

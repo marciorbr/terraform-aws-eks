@@ -53,16 +53,18 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_additional_aws_tags"></a> [additional\_aws\_tags](#input\_additional\_aws\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 | <a name="input_addons"></a> [addons](#input\_addons) | List of EKS addons to install | `list(string)` | <pre>[<br/>  "coredns",<br/>  "vpc-cni",<br/>  "kube-proxy"<br/>]</pre> | no |
 | <a name="input_cluster_log_types"></a> [cluster\_log\_types](#input\_cluster\_log\_types) | Map of log types to enable/disable | `map(bool)` | <pre>{<br/>  "api": true,<br/>  "audit": true,<br/>  "authenticator": true,<br/>  "controllerManager": true,<br/>  "scheduler": true<br/>}</pre> | no |
 | <a name="input_endpoint_private_access"></a> [endpoint\_private\_access](#input\_endpoint\_private\_access) | Enable private access to the EKS API server endpoint | `bool` | `true` | no |
 | <a name="input_endpoint_public_access"></a> [endpoint\_public\_access](#input\_endpoint\_public\_access) | Enable public access to the EKS API server endpoint | `bool` | `true` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment (e.g., dev, prod) | `string` | n/a | yes |
 | <a name="input_k8s_version"></a> [k8s\_version](#input\_k8s\_version) | The Kubernetes version for the EKS cluster | `string` | `"1.33"` | no |
-| <a name="input_on_demand_auto_scale_options"></a> [on\_demand\_auto\_scale\_options](#input\_on\_demand\_auto\_scale\_options) | Auto-scaling options for on-demand node group | `map(number)` | <pre>{<br/>  "desired": 1,<br/>  "max": 1,<br/>  "min": 1<br/>}</pre> | no |
+| <a name="input_on_demand_auto_scale_options"></a> [on\_demand\_auto\_scale\_options](#input\_on\_demand\_auto\_scale\_options) | Auto-scaling options for on-demand node group | `map(number)` | <pre>{<br/>  "desired": 2,<br/>  "max": 2,<br/>  "min": 2<br/>}</pre> | no |
 | <a name="input_on_demand_instance_types"></a> [on\_demand\_instance\_types](#input\_on\_demand\_instance\_types) | List of instance types for on-demand nodes | `list(string)` | <pre>[<br/>  "t3.medium"<br/>]</pre> | no |
 | <a name="input_private_subnets"></a> [private\_subnets](#input\_private\_subnets) | List of private subnet IDs | `list(string)` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The name of the project | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | The AWS region to deploy resources in | `string` | `"us-east-1"` | no |
 | <a name="input_zonal_shift_enabled"></a> [zonal\_shift\_enabled](#input\_zonal\_shift\_enabled) | Enable zonal shift for the EKS cluster | `bool` | `false` | no |
 
 ## Outputs

@@ -19,7 +19,8 @@ output "eks_cluster_id" {
 }
 
 output "aws_eks_cluster_auth" {
-  value = data.aws_eks_cluster_auth.default
+  value     = data.aws_eks_cluster_auth.default
+  sensitive = true
 }
 
 output "aws_caller_identity" {

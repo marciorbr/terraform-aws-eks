@@ -1,2 +1,5 @@
 # TODO KMS no cluster para encriptar secrets
 # TODO dar acesso de admin no cluster a uma IAM role passada como variável
+# TODO criar fargate profile
+# TODO criar node groups spot
+# TODO criar cluster autoscaler para node groups on demand

@@ -4,9 +4,23 @@ variable "project_name" {
 
 }
 
+variable "region" {
+  description = "The AWS region to deploy resources in"
+  type        = string
+  default     = "us-east-1"
+
+}
+
 variable "environment" {
   description = "The environment (e.g., dev, prod)"
   type        = string
+
+}
+
+variable "additional_aws_tags" {
+  description = "A map of tags to add to all resources"
+  type        = map(string)
+  default     = {}
 
 }
 
@@ -67,9 +81,9 @@ variable "on_demand_auto_scale_options" {
   description = "Auto-scaling options for on-demand node group"
   type        = map(number)
   default = {
-    desired = 1
-    max     = 1
-    min     = 1
+    desired = 2
+    max     = 2
+    min     = 2
   }
 
 }

@@ -19,6 +19,6 @@ resource "aws_eks_addon" "eks-addons" {
   resolve_conflicts_on_update = "OVERWRITE"
 
   depends_on = [
-    aws_eks_access_entry.nodes
+    aws_eks_node_group.on_demand
   ]
 }

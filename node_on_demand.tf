@@ -1,8 +1,8 @@
 resource "aws_eks_node_group" "on_demand" {
 
-  cluster_name = aws_eks_cluster.main.id
+  cluster_name = aws_eks_cluster.main.name
 
-  node_group_name = local.eks_on_demand_node_group
+  node_group_name = local.eks_node_group_name
 
   node_role_arn = aws_iam_role.eks_nodes_role.arn
 
@@ -25,12 +25,11 @@ resource "aws_eks_node_group" "on_demand" {
   }
 
   tags = {
-    Name                                              = local.eks_on_demand_node_group
-    Environment                                       = var.environment
-    "kubernetes.io/cluster/${local.eks_cluster_name}" = "shared"
+    "kubernetes.io/cluster/${var.project_name}" = "owned"
   }
 
   depends_on = [
+    # kubernetes_config_map.aws-auth
     aws_eks_access_entry.nodes
   ]
 

@@ -18,5 +18,6 @@ resource "helm_release" "metrics_server" {
 
   depends_on = [
     aws_eks_cluster.main,
+    aws_eks_node_group.on_demand
   ]
 }

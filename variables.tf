@@ -104,3 +104,12 @@ variable "addons" {
     error_message = "Each addon name must be one of: vpc-cni, coredns, kube-proxy"
   }
 }
+
+variable "fargate_profiles" {
+  description = "Lista de fargate profiles para criar, Cada profile e um objeto com nome do profile e qual namespace sera criado."
+  type = list(object({
+    name      = string
+    namespace = string
+  }))
+  default = []
+}

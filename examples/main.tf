@@ -74,12 +74,19 @@ module "eks_cluster" {
   project_name             = local.project_name
   environment              = local.environment
   private_subnets          = module.vpc.private_subnets_ids
-  on_demand_instance_types = ["t3.medium", "t3.large"]
+  on_demand_instance_types = ["t3.medium", "t3a.medium"]
   on_demand_auto_scale_options = {
     desired = 2
     max     = 3
     min     = 2
   }
   addons = ["vpc-cni", "kube-proxy", "coredns"]
+
+  fargate_profiles = [
+    {
+      name      = "chip"
+      namespace = "chip"
+    }
+  ]
 
 }

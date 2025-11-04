@@ -113,3 +113,18 @@ variable "fargate_profiles" {
   }))
   default = []
 }
+
+variable "karpenter_capacity" {
+  description = "Karpenter capacity configuração, nodepool e ec2 node class."
+  type = list(object({
+    name               = string
+    workload           = string
+    ami_family         = string
+    ami_ssm            = string
+    instance_family    = list(string)
+    instance_sizes     = list(string)
+    capacity_type      = list(string)
+    availability_zones = list(string)
+  }))
+  default = []
+}

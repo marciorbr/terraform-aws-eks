@@ -6,6 +6,7 @@
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.12 |
 | <a name="requirement_aws"></a> [aws](#requirement\_aws) | 6.11.0 |
 | <a name="requirement_helm"></a> [helm](#requirement\_helm) | 3.0.2 |
+| <a name="requirement_kubectl"></a> [kubectl](#requirement\_kubectl) | 1.19.0 |
 
 ## Providers
 
@@ -13,6 +14,7 @@
 |------|---------|
 | <a name="provider_aws"></a> [aws](#provider\_aws) | 6.11.0 |
 | <a name="provider_helm"></a> [helm](#provider\_helm) | 3.0.2 |
+| <a name="provider_kubectl"></a> [kubectl](#provider\_kubectl) | 1.19.0 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | 4.1.0 |
 
 ## Modules
@@ -31,19 +33,25 @@ No modules.
 | [aws_eks_node_group.on_demand](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_node_group) | resource |
 | [aws_iam_instance_profile.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_openid_connect_provider.eks_oidc](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_openid_connect_provider) | resource |
+| [aws_iam_policy.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_policy) | resource |
 | [aws_iam_role.eks_cluster_role](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.eks_nodes_role](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.fargate](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role) | resource |
+| [aws_iam_role.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role) | resource |
 | [aws_iam_role_policy_attachment.cloudwatch](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.cni](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ecr](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.eks_cluster_policy](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.eks_service_policy](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.fargate](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_iam_role_policy_attachment.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ssm](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
+| [helm_release.karpenter](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
 | [helm_release.kube_state_metrics](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
 | [helm_release.metrics_server](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
+| [kubectl_manifest.ec2_node_class](https://registry.terraform.io/providers/gavinbunney/kubectl/1.19.0/docs/resources/manifest) | resource |
+| [kubectl_manifest.nodepool](https://registry.terraform.io/providers/gavinbunney/kubectl/1.19.0/docs/resources/manifest) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/caller_identity) | data source |
 | [aws_eks_addon_version.addon_version](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_addon_version) | data source |
 | [aws_eks_cluster.this](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_cluster) | data source |
@@ -51,7 +59,10 @@ No modules.
 | [aws_eks_cluster_auth.this](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_cluster_auth) | data source |
 | [aws_iam_policy_document.cluster](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.fargate](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.karpenter_assume_role](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_ssm_parameter.karpenter_ami](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/ssm_parameter) | data source |
 | [tls_certificate.eks_oidc_tls_certificate](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/data-sources/certificate) | data source |
 
 ## Inputs
@@ -66,6 +77,7 @@ No modules.
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment (e.g., dev, prod) | `string` | n/a | yes |
 | <a name="input_fargate_profiles"></a> [fargate\_profiles](#input\_fargate\_profiles) | Lista de fargate profiles para criar, Cada profile e um objeto com nome do profile e qual namespace sera criado. | <pre>list(object({<br/>    name      = string<br/>    namespace = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_k8s_version"></a> [k8s\_version](#input\_k8s\_version) | The Kubernetes version for the EKS cluster | `string` | `"1.33"` | no |
+| <a name="input_karpenter_capacity"></a> [karpenter\_capacity](#input\_karpenter\_capacity) | Karpenter capacity configuração, nodepool e ec2 node class. | <pre>list(object({<br/>    name               = string<br/>    workload           = string<br/>    ami_family         = string<br/>    ami_ssm            = string<br/>    instance_family    = list(string)<br/>    instance_sizes     = list(string)<br/>    capacity_type      = list(string)<br/>    availability_zones = list(string)<br/>  }))</pre> | `[]` | no |
 | <a name="input_on_demand_auto_scale_options"></a> [on\_demand\_auto\_scale\_options](#input\_on\_demand\_auto\_scale\_options) | Auto-scaling options for on-demand node group | `map(number)` | <pre>{<br/>  "desired": 2,<br/>  "max": 2,<br/>  "min": 2<br/>}</pre> | no |
 | <a name="input_on_demand_instance_types"></a> [on\_demand\_instance\_types](#input\_on\_demand\_instance\_types) | List of instance types for on-demand nodes | `list(string)` | <pre>[<br/>  "t3.medium"<br/>]</pre> | no |
 | <a name="input_private_subnets"></a> [private\_subnets](#input\_private\_subnets) | List of private subnet IDs | `list(string)` | n/a | yes |

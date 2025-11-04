@@ -82,10 +82,23 @@ module "eks_cluster" {
   }
   addons = ["vpc-cni", "kube-proxy", "coredns"]
 
-  fargate_profiles = [
+  # fargate_profiles = [
+  #   {
+  #     name      = "chip"
+  #     namespace = "chip"
+  #   }
+  # ]
+
+  karpenter_capacity = [
     {
-      name      = "chip"
-      namespace = "chip"
+      name               = "karpenter-dev"
+      workload           = "dev"
+      ami_family         = "AL2023"
+      ami_ssm            = "/aws/service/eks/optimized-ami/1.33/amazon-linux-2023/x86_64/standard/recommended/image_id"
+      instance_family    = ["t3", "t3a"]
+      instance_sizes     = ["small", "medium"]
+      capacity_type      = ["on-demand", "spot"]
+      availability_zones = ["us-east-1a", "us-east-1b"]
     }
   ]
 

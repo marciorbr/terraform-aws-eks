@@ -90,18 +90,19 @@ variable "on_demand_auto_scale_options" {
 
 variable "addons" {
   type        = list(string)
-  default     = ["coredns", "vpc-cni", "kube-proxy"]
+  default     = ["eks-pod-identity-agent", "coredns", "vpc-cni", "kube-proxy"]
   description = "List of EKS addons to install"
 
   validation {
     condition = alltrue([
       for addon in var.addons : contains([
+        "eks-pod-identity-agent",
         "vpc-cni",
         "coredns",
         "kube-proxy"
       ], addon)
     ])
-    error_message = "Each addon name must be one of: vpc-cni, coredns, kube-proxy"
+    error_message = "Each addon name must be one of: eks-pod-identity-agent, coredns, vpc-cni, kube-proxy"
   }
 }
 

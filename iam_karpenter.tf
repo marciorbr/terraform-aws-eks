@@ -1,5 +1,6 @@
-# Defines the assume role policy for the Karpenter IAM role
 data "aws_iam_policy_document" "karpenter_assume_role" {
+
+  count = length(var.karpenter_capacity) > 0 ? 1 : 0
   statement {
     effect  = "Allow"
     actions = ["sts:AssumeRoleWithWebIdentity"]
@@ -14,17 +15,18 @@ data "aws_iam_policy_document" "karpenter_assume_role" {
     }
   }
 }
-
-# Creates the IAM role for Karpenter
 resource "aws_iam_role" "karpenter" {
-  name = "eks-karpenter-role-${local.name_suffix}"
 
-  assume_role_policy = data.aws_iam_policy_document.karpenter_assume_role.json
+  count = length(var.karpenter_capacity) > 0 ? 1 : 0
+
+  name               = "eks-karpenter-role-${local.name_suffix}"
+  assume_role_policy = data.aws_iam_policy_document.karpenter_assume_role[0].json
 
 }
 
-# Defines the IAM policy for Karpenter
 data "aws_iam_policy_document" "karpenter" {
+
+  count = length(var.karpenter_capacity) > 0 ? 1 : 0
   statement {
     effect = "Allow"
     actions = [
@@ -53,14 +55,18 @@ data "aws_iam_policy_document" "karpenter" {
   }
 }
 
-# Creates the IAM policy for Karpenter
 resource "aws_iam_policy" "karpenter" {
+
+  count = length(var.karpenter_capacity) > 0 ? 1 : 0
+
   name   = "eks-karpenter-policy-${local.name_suffix}"
-  policy = data.aws_iam_policy_document.karpenter.json
+  policy = data.aws_iam_policy_document.karpenter[0].json
 }
 
-# Attaches the Karpenter policy to the Karpenter role
 resource "aws_iam_role_policy_attachment" "karpenter" {
-  policy_arn = aws_iam_policy.karpenter.arn
-  role       = aws_iam_role.karpenter.name
+
+  count = length(var.karpenter_capacity) > 0 ? 1 : 0
+
+  policy_arn = aws_iam_policy.karpenter[0].arn
+  role       = aws_iam_role.karpenter[0].name
 }

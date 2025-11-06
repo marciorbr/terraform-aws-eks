@@ -25,6 +25,16 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [aws_cloudwatch_event_rule.karpenter_instance_terminate](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/cloudwatch_event_rule) | resource |
+| [aws_cloudwatch_event_rule.karpenter_rebalance](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/cloudwatch_event_rule) | resource |
+| [aws_cloudwatch_event_rule.karpenter_scheduled_change](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/cloudwatch_event_rule) | resource |
+| [aws_cloudwatch_event_rule.karpenter_spot_termination](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/cloudwatch_event_rule) | resource |
+| [aws_cloudwatch_event_rule.karpenter_state_change](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/cloudwatch_event_rule) | resource |
+| [aws_cloudwatch_event_target.karpenter_instance_terminate](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/cloudwatch_event_target) | resource |
+| [aws_cloudwatch_event_target.karpenter_rebalance](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/cloudwatch_event_target) | resource |
+| [aws_cloudwatch_event_target.karpenter_scheduled_change](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/cloudwatch_event_target) | resource |
+| [aws_cloudwatch_event_target.karpenter_spot_termination](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/cloudwatch_event_target) | resource |
+| [aws_cloudwatch_event_target.karpenter_state_change](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/cloudwatch_event_target) | resource |
 | [aws_eks_access_entry.fargate](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_access_entry) | resource |
 | [aws_eks_access_entry.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_access_entry) | resource |
 | [aws_eks_addon.eks-addons](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_addon) | resource |
@@ -47,6 +57,8 @@ No modules.
 | [aws_iam_role_policy_attachment.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.ssm](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
+| [aws_sqs_queue.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/sqs_queue) | resource |
+| [aws_sqs_queue_policy.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/sqs_queue_policy) | resource |
 | [helm_release.karpenter](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
 | [helm_release.kube_state_metrics](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
 | [helm_release.metrics_server](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |

@@ -1,4 +1,7 @@
 resource "helm_release" "karpenter" {
+
+  count = length(var.karpenter_capacity) > 0 ? 1 : 0
+
   namespace        = "karpenter"
   create_namespace = true
 
@@ -10,7 +13,7 @@ resource "helm_release" "karpenter" {
   set = [
     {
       name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-      value = aws_iam_role.karpenter.arn
+      value = aws_iam_role.karpenter[0].arn
     },
 
     {

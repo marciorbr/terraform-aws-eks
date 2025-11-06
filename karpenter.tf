@@ -1,6 +1,6 @@
 resource "kubectl_manifest" "ec2_node_class" {
 
-  count = length(var.karpenter_capacity)
+  count = length(var.karpenter_capacity) > 0 ? length(var.karpenter_capacity) : 0
 
   yaml_body = templatefile("${path.module}/tpl/karpenter/ec2_node_class.yml", {
     NAME              = var.karpenter_capacity[count.index].name
@@ -15,7 +15,7 @@ resource "kubectl_manifest" "ec2_node_class" {
 
 resource "kubectl_manifest" "nodepool" {
 
-  count = length(var.karpenter_capacity)
+  count = length(var.karpenter_capacity) > 0 ? length(var.karpenter_capacity) : 0
 
   yaml_body = templatefile("${path.module}/tpl/karpenter/nodepool.yml", {
     NAME               = var.karpenter_capacity[count.index].name

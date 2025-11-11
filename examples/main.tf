@@ -74,6 +74,7 @@ module "eks_cluster" {
   project_name             = local.project_name
   environment              = local.environment
   private_subnets          = module.vpc.private_subnets_ids
+  vpc_id                   = module.vpc.vpc_id
   on_demand_instance_types = ["t3.medium", "t3a.medium"]
   on_demand_auto_scale_options = {
     desired = 2
@@ -102,4 +103,5 @@ module "eks_cluster" {
     }
   ]
 
+  enable_aws_lb_controller = false
 }

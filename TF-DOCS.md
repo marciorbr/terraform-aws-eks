@@ -41,10 +41,14 @@ No modules.
 | [aws_eks_cluster.main](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_cluster) | resource |
 | [aws_eks_fargate_profile.this](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_fargate_profile) | resource |
 | [aws_eks_node_group.on_demand](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_node_group) | resource |
+| [aws_eks_pod_identity_association.aws_lb_controller](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_pod_identity_association) | resource |
 | [aws_eks_pod_identity_association.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/eks_pod_identity_association) | resource |
 | [aws_iam_instance_profile.nodes](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_instance_profile) | resource |
 | [aws_iam_openid_connect_provider.eks_oidc](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_openid_connect_provider) | resource |
+| [aws_iam_policy.aws_lb_policy](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_policy) | resource |
 | [aws_iam_policy.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_policy) | resource |
+| [aws_iam_policy_attachment.aws_lb_policy](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_policy_attachment) | resource |
+| [aws_iam_role.aws_lb_controller](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.eks_cluster_role](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.eks_nodes_role](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role) | resource |
 | [aws_iam_role.fargate](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role) | resource |
@@ -60,6 +64,7 @@ No modules.
 | [aws_iam_role_policy_attachment.ssm](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_sqs_queue.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/sqs_queue) | resource |
 | [aws_sqs_queue_policy.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/sqs_queue_policy) | resource |
+| [helm_release.alb_ingress_controller](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
 | [helm_release.karpenter](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
 | [helm_release.kube_state_metrics](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
 | [helm_release.metrics_server](https://registry.terraform.io/providers/hashicorp/helm/3.0.2/docs/resources/release) | resource |
@@ -70,6 +75,8 @@ No modules.
 | [aws_eks_cluster.this](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_cluster) | data source |
 | [aws_eks_cluster_auth.default](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_cluster_auth) | data source |
 | [aws_eks_cluster_auth.this](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/eks_cluster_auth) | data source |
+| [aws_iam_policy_document.aws_lb_policy](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.aws_lb_role](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.cluster](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.fargate](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
 | [aws_iam_policy_document.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/data-sources/iam_policy_document) | data source |
@@ -85,6 +92,7 @@ No modules.
 | <a name="input_additional_aws_tags"></a> [additional\_aws\_tags](#input\_additional\_aws\_tags) | A map of tags to add to all resources | `map(string)` | `{}` | no |
 | <a name="input_addons"></a> [addons](#input\_addons) | List of EKS addons to install | `list(string)` | <pre>[<br/>  "eks-pod-identity-agent",<br/>  "coredns",<br/>  "vpc-cni",<br/>  "kube-proxy"<br/>]</pre> | no |
 | <a name="input_cluster_log_types"></a> [cluster\_log\_types](#input\_cluster\_log\_types) | Map of log types to enable/disable | `map(bool)` | <pre>{<br/>  "api": true,<br/>  "audit": true,<br/>  "authenticator": true,<br/>  "controllerManager": true,<br/>  "scheduler": true<br/>}</pre> | no |
+| <a name="input_enable_aws_lb_controller"></a> [enable\_aws\_lb\_controller](#input\_enable\_aws\_lb\_controller) | Enable AWS Load Balancer Controller | `bool` | `true` | no |
 | <a name="input_endpoint_private_access"></a> [endpoint\_private\_access](#input\_endpoint\_private\_access) | Enable private access to the EKS API server endpoint | `bool` | `true` | no |
 | <a name="input_endpoint_public_access"></a> [endpoint\_public\_access](#input\_endpoint\_public\_access) | Enable public access to the EKS API server endpoint | `bool` | `true` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | The environment (e.g., dev, prod) | `string` | n/a | yes |
@@ -96,6 +104,7 @@ No modules.
 | <a name="input_private_subnets"></a> [private\_subnets](#input\_private\_subnets) | List of private subnet IDs | `list(string)` | n/a | yes |
 | <a name="input_project_name"></a> [project\_name](#input\_project\_name) | The name of the project | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | The AWS region to deploy resources in | `string` | `"us-east-1"` | no |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | The VPC ID | `any` | n/a | yes |
 | <a name="input_zonal_shift_enabled"></a> [zonal\_shift\_enabled](#input\_zonal\_shift\_enabled) | Enable zonal shift for the EKS cluster | `bool` | `false` | no |
 
 ## Outputs

@@ -31,6 +31,10 @@ variable "k8s_version" {
 
 }
 
+variable "vpc_id" {
+  description = "The VPC ID"
+}
+
 variable "private_subnets" {
   description = "List of private subnet IDs"
   type        = list(string)
@@ -128,4 +132,11 @@ variable "karpenter_capacity" {
     availability_zones = list(string)
   }))
   default = []
+}
+
+
+variable "enable_aws_lb_controller" {
+  description = "Enable AWS Load Balancer Controller"
+  type        = bool
+  default     = true
 }

@@ -2,8 +2,8 @@
 
 - [x] criar fargate profile
 - [x] Configurar karpenter
-- [ ] Configurar Addon Pod Identity
-- [ ] Alterar fargate e karpenter para Pod Identity
+- [x] Configurar Addon Pod Identity
+- [x] Alterar fargate e karpenter para Pod Identity
 
 - [ ] ajustar - eks-node-instance-profile${local.name_suffix} e verificar todos os outros nome se está faltando
 - [ ] KMS no cluster para encriptar secrets

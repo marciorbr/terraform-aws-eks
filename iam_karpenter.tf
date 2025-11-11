@@ -2,16 +2,14 @@ data "aws_iam_policy_document" "karpenter_assume_role" {
 
   count = length(var.karpenter_capacity) > 0 ? 1 : 0
   statement {
-    effect  = "Allow"
-    actions = ["sts:AssumeRoleWithWebIdentity"]
+    effect = "Allow"
+    actions = [
+      "sts:AssumeRole",
+      "sts:TagSession"
+    ]
     principals {
-      type        = "Federated"
-      identifiers = [aws_iam_openid_connect_provider.eks_oidc.arn]
-    }
-    condition {
-      test     = "StringEquals"
-      variable = "${replace(aws_iam_openid_connect_provider.eks_oidc.url, "https://", "")}:sub"
-      values   = ["system:serviceaccount:karpenter:karpenter"]
+      type        = "Service"
+      identifiers = ["pods.eks.amazonaws.com"]
     }
   }
 }
@@ -69,4 +67,13 @@ resource "aws_iam_role_policy_attachment" "karpenter" {
 
   policy_arn = aws_iam_policy.karpenter[0].arn
   role       = aws_iam_role.karpenter[0].name
+}
+
+resource "aws_eks_pod_identity_association" "karpenter" {
+  count = length(var.karpenter_capacity) > 0 ? 1 : 0
+
+  cluster_name    = aws_eks_cluster.main.name
+  namespace       = "karpenter"
+  service_account = "karpenter"
+  role_arn        = aws_iam_role.karpenter[0].arn
 }

@@ -12,11 +12,6 @@ resource "helm_release" "karpenter" {
 
   set = [
     {
-      name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-      value = aws_iam_role.karpenter[0].arn
-    },
-
-    {
       name  = "settings.clusterName"
       value = aws_eks_cluster.main.name
     },
@@ -31,10 +26,10 @@ resource "helm_release" "karpenter" {
       value = aws_iam_instance_profile.nodes.name
     },
 
-    # {
-    #   name  = "settings.interruptionQueue"
-    #   value = aws_sqs_queue.karpenter.name
-    # }
+    {
+      name  = "settings.interruptionQueue"
+      value = aws_sqs_queue.karpenter[0].name
+    }
   ]
 
   depends_on = [

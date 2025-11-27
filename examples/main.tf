@@ -73,6 +73,7 @@ module "eks_cluster" {
   k8s_version              = local.k8s_version
   project_name             = local.project_name
   environment              = local.environment
+  public_subnets           = module.vpc.public_subnets_ids
   private_subnets          = module.vpc.private_subnets_ids
   vpc_id                   = module.vpc.vpc_id
   on_demand_instance_types = ["t3.medium", "t3a.medium"]
@@ -103,5 +104,7 @@ module "eks_cluster" {
     }
   ]
 
-  enable_aws_lb_controller = false
+  enable_aws_lb_controller = true
+
+  enable_nginx_controller_with_nlb_target_group_bind = true
 }

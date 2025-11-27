@@ -38,7 +38,10 @@ variable "vpc_id" {
 variable "private_subnets" {
   description = "List of private subnet IDs"
   type        = list(string)
+}
 
+variable "public_subnets" {
+  description = "List of public subnet IDs"
 }
 
 variable "endpoint_private_access" {
@@ -134,9 +137,14 @@ variable "karpenter_capacity" {
   default = []
 }
 
-
 variable "enable_aws_lb_controller" {
   description = "Enable AWS Load Balancer Controller"
   type        = bool
   default     = true
+}
+
+variable "enable_nginx_controller_with_nlb_target_group_bind" {
+  description = "Enable External AWS NLB with Ingress Nginx and Target Group Bind"
+  type        = bool
+  default     = false
 }

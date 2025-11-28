@@ -3,7 +3,7 @@ kind: EC2NodeClass
 metadata:
   name: linuxtips
 spec:
-  instanceProfile: "eks-node-instance-profiledev-myproject"
+  instanceProfile: "eks-node-instance-profile-dev-myproject"
   amiFamily: "AL2023"
   amiSelectorTerms:
   - id: ami-07a8187677f84efd9

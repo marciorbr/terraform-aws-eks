@@ -51,6 +51,6 @@ resource "aws_iam_role_policy_attachment" "cloudwatch" {
 }
 
 resource "aws_iam_instance_profile" "nodes" {
-  name = "eks-node-instance-profile${local.name_suffix}"
+  name = "eks-node-instance-profile-${local.name_suffix}"
   role = aws_iam_role.eks_nodes_role.name
 }

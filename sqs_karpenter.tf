@@ -2,7 +2,7 @@ resource "aws_sqs_queue" "karpenter" {
 
   count = length(var.karpenter_capacity) > 0 ? 1 : 0
 
-  name                       = "eks-karpenter-sqs-${local.name_suffix}"
+  name                       = "eks-aws-karpenter-sqs-${local.name_suffix}"
   delay_seconds              = 0
   message_retention_seconds  = 86400
   receive_wait_time_seconds  = 10
@@ -37,7 +37,7 @@ resource "aws_cloudwatch_event_rule" "karpenter_instance_terminate" {
 
   count = length(var.karpenter_capacity) > 0 ? 1 : 0
 
-  name        = "eks-karpenter-instance-terminate-${local.name_suffix}"
+  name        = "eks-aws-karpenter-instance-terminate-${local.name_suffix}"
   description = var.project_name
   event_pattern = jsonencode({
     source = ["aws.autoscaling"]
@@ -61,7 +61,7 @@ resource "aws_cloudwatch_event_rule" "karpenter_scheduled_change" {
 
   count = length(var.karpenter_capacity) > 0 ? 1 : 0
 
-  name        = "eks-karpenter-scheduled-change-${local.name_suffix}"
+  name        = "eks-aws-karpenter-scheduled-change-${local.name_suffix}"
   description = var.project_name
   event_pattern = jsonencode({
     source = ["aws.health"]
@@ -92,7 +92,7 @@ resource "aws_cloudwatch_event_rule" "karpenter_spot_termination" {
 
   count = length(var.karpenter_capacity) > 0 ? 1 : 0
 
-  name        = "eks-karpenter-spot-termination-${local.name_suffix}"
+  name        = "eks-aws-karpenter-spot-termination-${local.name_suffix}"
   description = var.project_name
 
   event_pattern = jsonencode({
@@ -117,7 +117,7 @@ resource "aws_cloudwatch_event_rule" "karpenter_rebalance" {
 
   count = length(var.karpenter_capacity) > 0 ? 1 : 0
 
-  name        = "eks-karpenter-rebalance-${local.name_suffix}"
+  name        = "eks-aws-karpenter-rebalance-${local.name_suffix}"
   description = var.project_name
 
   event_pattern = jsonencode({
@@ -142,7 +142,7 @@ resource "aws_cloudwatch_event_rule" "karpenter_state_change" {
 
   count = length(var.karpenter_capacity) > 0 ? 1 : 0
 
-  name        = "eks-karpenter-state-change-${local.name_suffix}"
+  name        = "eks-aws-karpenter-state-change-${local.name_suffix}"
   description = var.project_name
 
   event_pattern = jsonencode({

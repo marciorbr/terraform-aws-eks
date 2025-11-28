@@ -21,7 +21,7 @@ resource "aws_lb_target_group" "main" {
 
   count = var.enable_nginx_controller_with_nlb_target_group_bind ? 1 : 0
 
-  name     = "nlb-target-group-${local.name_suffix}"
+  name     = "eks-aws-nlb-target-group-${local.name_suffix}"
   port     = 30080
   protocol = "TCP"
   vpc_id   = var.vpc_id

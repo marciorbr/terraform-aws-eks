@@ -17,7 +17,7 @@ resource "aws_iam_role" "karpenter" {
 
   count = length(var.karpenter_capacity) > 0 ? 1 : 0
 
-  name               = "eks-karpenter-role-${local.name_suffix}"
+  name               = "eks-karpenter-iam-role-${local.name_suffix}"
   assume_role_policy = data.aws_iam_policy_document.karpenter_assume_role[0].json
 
 }

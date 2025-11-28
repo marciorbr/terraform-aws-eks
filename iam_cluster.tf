@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "cluster" {
 }
 
 resource "aws_iam_role" "eks_cluster_role" {
-  name               = "eks-cluster-role-${local.name_suffix}"
+  name               = "eks-cluster-iam-role-${local.name_suffix}"
   assume_role_policy = data.aws_iam_policy_document.cluster.json
 }
 

@@ -23,7 +23,7 @@ resource "aws_iam_role" "aws_lb_controller" {
   count = var.enable_aws_lb_controller ? 1 : 0
 
   assume_role_policy = data.aws_iam_policy_document.aws_lb_role[0].json
-  name               = "eks-alb-role-${local.name_suffix}"
+  name               = "eks-alb-iam-role-${local.name_suffix}"
 }
 
 data "aws_iam_policy_document" "aws_lb_policy" {
@@ -139,7 +139,7 @@ resource "aws_iam_policy_attachment" "aws_lb_policy" {
 
   count = var.enable_aws_lb_controller ? 1 : 0
 
-  name = "aws_lb_policy"
+  name = "eks-alb-policy-attachment-${local.name_suffix}"
 
   roles = [aws_iam_role.aws_lb_controller[0].name]
 

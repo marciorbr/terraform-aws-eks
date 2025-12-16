@@ -124,6 +124,20 @@ variable "custom_access_entries" {
   default = []
 }
 
+variable "custom_security_group_rule_cluster" {
+  description = "Custom security group rule for the EKS cluster"
+  type = list(object({
+    name        = string
+    cidr_blocks = list(string)
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    description = string
+    type        = string
+  }))
+  default = []
+}
+
 variable "fargate_profiles" {
   description = "List of Fargate profiles to create. Each profile is an object with name and namespace."
   type = list(object({

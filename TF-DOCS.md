@@ -64,6 +64,7 @@ No modules.
 | [aws_lb.ingress](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/lb) | resource |
 | [aws_lb_listener.main](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/lb_listener) | resource |
 | [aws_lb_target_group.main](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/lb_target_group) | resource |
+| [aws_security_group_rule.custom_rules_cluster](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/security_group_rule) | resource |
 | [aws_security_group_rule.nodeports](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/security_group_rule) | resource |
 | [aws_sqs_queue.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/sqs_queue) | resource |
 | [aws_sqs_queue_policy.karpenter](https://registry.terraform.io/providers/hashicorp/aws/6.11.0/docs/resources/sqs_queue_policy) | resource |
@@ -95,6 +96,7 @@ No modules.
 | <a name="input_addons"></a> [addons](#input\_addons) | List of EKS addons to install | `list(string)` | <pre>[<br/>  "eks-pod-identity-agent",<br/>  "coredns",<br/>  "vpc-cni",<br/>  "kube-proxy"<br/>]</pre> | no |
 | <a name="input_cluster_log_types"></a> [cluster\_log\_types](#input\_cluster\_log\_types) | Map of log types to enable/disable | `map(bool)` | <pre>{<br/>  "api": true,<br/>  "audit": true,<br/>  "authenticator": true,<br/>  "controllerManager": true,<br/>  "scheduler": true<br/>}</pre> | no |
 | <a name="input_custom_access_entries"></a> [custom\_access\_entries](#input\_custom\_access\_entries) | List of custom EKS access entries to create. | <pre>list(object({<br/>    name              = string<br/>    principal_arn     = string<br/>    type              = string<br/>    kubernetes_groups = list(string)<br/>  }))</pre> | `[]` | no |
+| <a name="input_custom_security_group_rule_cluster"></a> [custom\_security\_group\_rule\_cluster](#input\_custom\_security\_group\_rule\_cluster) | Custom security group rule for the EKS cluster | <pre>list(object({<br/>    name        = string<br/>    cidr_blocks = list(string)<br/>    from_port   = number<br/>    to_port     = number<br/>    protocol    = string<br/>    description = string<br/>    type        = string<br/>  }))</pre> | `[]` | no |
 | <a name="input_enable_aws_lb_controller"></a> [enable\_aws\_lb\_controller](#input\_enable\_aws\_lb\_controller) | Enable AWS Load Balancer Controller | `bool` | `true` | no |
 | <a name="input_enable_nginx_controller_with_nlb_target_group_bind"></a> [enable\_nginx\_controller\_with\_nlb\_target\_group\_bind](#input\_enable\_nginx\_controller\_with\_nlb\_target\_group\_bind) | Enable External AWS NLB with Ingress Nginx and Target Group Bind | `bool` | `false` | no |
 | <a name="input_endpoint_private_access"></a> [endpoint\_private\_access](#input\_endpoint\_private\_access) | Enable private access to the EKS API server endpoint | `bool` | `true` | no |

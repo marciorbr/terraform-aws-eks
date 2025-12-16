@@ -113,8 +113,19 @@ variable "addons" {
   }
 }
 
+variable "custom_access_entries" {
+  description = "List of custom EKS access entries to create."
+  type = list(object({
+    name              = string
+    principal_arn     = string
+    type              = string
+    kubernetes_groups = list(string)
+  }))
+  default = []
+}
+
 variable "fargate_profiles" {
-  description = "Lista de fargate profiles para criar, Cada profile e um objeto com nome do profile e qual namespace sera criado."
+  description = "List of Fargate profiles to create. Each profile is an object with name and namespace."
   type = list(object({
     name      = string
     namespace = string
@@ -123,7 +134,7 @@ variable "fargate_profiles" {
 }
 
 variable "karpenter_capacity" {
-  description = "Karpenter capacity configuração, nodepool e ec2 node class."
+  description = "Karpenter capacity configuration, nodepool and ec2 node class."
   type = list(object({
     name               = string
     workload           = string

@@ -84,6 +84,15 @@ module "eks_cluster" {
   }
   addons = ["eks-pod-identity-agent", "vpc-cni", "kube-proxy", "coredns"]
 
+  # custom_access_entries = [
+  #   {
+  #     name              = "custom-entry-1"
+  #     principal_arn     = "arn:aws:iam::123456789012:role/CustomRole1"
+  #     type              = "STANDARD"
+  #     kubernetes_groups = ["cluster-admin"]
+  #   }
+  # ]
+
   # fargate_profiles = [
   #   {
   #     name      = "chip"

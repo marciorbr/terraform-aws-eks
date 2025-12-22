@@ -69,14 +69,21 @@ module "vpc" {
 }
 
 module "eks_cluster" {
-  source                   = "../"
+
+  source = "../"
+
+  providers = {
+    helm    = helm.cluster_1
+    kubectl = kubectl.cluster_1
+  }
+
   k8s_version              = local.k8s_version
   project_name             = local.project_name
   environment              = local.environment
   public_subnets           = module.vpc.public_subnets_ids
   private_subnets          = module.vpc.private_subnets_ids
   vpc_id                   = module.vpc.vpc_id
-  on_demand_instance_types = ["t3.medium", "t3a.medium"]
+  on_demand_instance_types = ["t3.medium"]
   on_demand_auto_scale_options = {
     desired = 2
     max     = 3
@@ -112,6 +119,36 @@ module "eks_cluster" {
       availability_zones = ["us-east-1a", "us-east-1b"]
     }
   ]
+
+  enable_aws_lb_controller = true
+
+  enable_nginx_controller_with_nlb_target_group_bind = true
+}
+
+
+module "eks_cluster_2" {
+
+  source = "../"
+
+  providers = {
+    helm    = helm.cluster_2
+    kubectl = kubectl.cluster_2
+  }
+
+  k8s_version              = local.k8s_version
+  project_name             = local.project_name
+  environment              = local.environment
+  public_subnets           = module.vpc.public_subnets_ids
+  private_subnets          = module.vpc.private_subnets_ids
+  vpc_id                   = module.vpc.vpc_id
+  on_demand_instance_types = ["t3.medium"]
+  on_demand_auto_scale_options = {
+    desired = 1
+    max     = 3
+    min     = 1
+  }
+  addons = ["eks-pod-identity-agent", "vpc-cni", "kube-proxy", "coredns"]
+
 
   enable_aws_lb_controller = true
 

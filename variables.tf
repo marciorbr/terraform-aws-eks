@@ -162,6 +162,12 @@ variable "karpenter_capacity" {
   default = []
 }
 
+variable "enable_efs_csi" {
+  description = "Enable EFS CSI Driver for the EKS cluster"
+  type        = bool
+  default     = false
+}
+
 variable "enable_aws_lb_controller" {
   description = "Enable AWS Load Balancer Controller"
   type        = bool

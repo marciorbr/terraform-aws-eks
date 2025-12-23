@@ -26,3 +26,7 @@ output "aws_eks_cluster_auth" {
 output "aws_caller_identity" {
   value = data.aws_caller_identity.current
 }
+
+output "efs_security_group_id" {
+  value = length(aws_security_group.efs) > 0 ? aws_security_group.efs[0].id : null
+}

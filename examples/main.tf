@@ -123,6 +123,8 @@ module "eks_cluster" {
   enable_aws_lb_controller = true
 
   enable_nginx_controller_with_nlb_target_group_bind = true
+
+  enable_efs_csi = true
 }
 
 

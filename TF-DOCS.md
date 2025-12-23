@@ -128,6 +128,7 @@ No modules.
 |------|-------------|
 | <a name="output_aws_caller_identity"></a> [aws\_caller\_identity](#output\_aws\_caller\_identity) | n/a |
 | <a name="output_aws_eks_cluster_auth"></a> [aws\_eks\_cluster\_auth](#output\_aws\_eks\_cluster\_auth) | n/a |
+| <a name="output_efs_security_group_id"></a> [efs\_security\_group\_id](#output\_efs\_security\_group\_id) | n/a |
 | <a name="output_eks_certificate_authority"></a> [eks\_certificate\_authority](#output\_eks\_certificate\_authority) | EKS Cluster certificate authority data |
 | <a name="output_eks_cluster_id"></a> [eks\_cluster\_id](#output\_eks\_cluster\_id) | EKS Cluster ID |
 | <a name="output_eks_cluster_name"></a> [eks\_cluster\_name](#output\_eks\_cluster\_name) | EKS Cluster name |

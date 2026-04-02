@@ -47,6 +47,7 @@ data "aws_iam_policy_document" "karpenter" {
       "ec2:DeleteLaunchTemplate",
       "ssm:GetParameter",
       "iam:PassRole",
+      "iam:CreateServiceLinkedRole",
       "sqs:*"
     ]
     resources = ["*"]
